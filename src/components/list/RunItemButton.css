@@ -1,4 +1,5 @@
 .runItemButton {
+  margin-top: 15px;
   text-align: center;
   border: 1px dashed #d2eef0;
 }
@@ -19,9 +20,9 @@
 .runItemButton:hover {
   border: 1px solid #89F7E2;
   background: #89F7E2;
+  box-shadow: -3px -3px #d2eef0;
 }
 
 .runItemButton:hover .plusButton {
-  background: #ffffff;
-  color: #89F7E2;
+  color: #d2eef0;
 }
