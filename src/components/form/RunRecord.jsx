@@ -30,7 +30,7 @@ const RunRecord = () => {
         <label htmlFor="run-feeling">
           How are you feeling today?
         </label>
-        <textarea name="feeling" id="" cols="30" rows="10" />
+        <textarea name="feeling" cols="30" rows="10" />
       </div>
     </form>
   );
