@@ -1,11 +1,13 @@
 import './App.css';
-import Runiary from './components/Runiary';
-import RunDiaryForm from './components/form/RunDiaryForm';
+
+// import { RuniaryForm } from './components/form/RunDiaryForm';
+import { RuniaryHeader } from './components/header/RuniaryHeader';
+import { Runiary } from './components/list/Runiary';
 
 const App = () => {
   return (
     <div className="App">
-      <RunDiaryForm />
+      <RuniaryHeader />
       <Runiary />
     </div>
   );
