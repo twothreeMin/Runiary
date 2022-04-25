@@ -1,0 +1,27 @@
+.runItemButton {
+  text-align: center;
+  border: 1px dashed #d2eef0;
+}
+
+.plusButton {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin: 20px 0px;
+  border: 1px dashed #d2eef0;
+  border-radius: 50%;
+
+  
+  color: #89F7E2;
+  font-size: 36px;
+}
+
+.runItemButton:hover {
+  border: 1px solid #89F7E2;
+  background: #89F7E2;
+}
+
+.runItemButton:hover .plusButton {
+  background: #ffffff;
+  color: #89F7E2;
+}
