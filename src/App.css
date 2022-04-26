@@ -1,4 +1,10 @@
 .App {
   text-align: center;
-  padding: 40px 250px;
+  padding: 40px 230px;
+}
+
+@media screen and (max-width: 1024px) {
+  .App {
+    padding: 40px 10px;
+  }
 }

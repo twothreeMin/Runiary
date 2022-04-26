@@ -1,0 +1,29 @@
+.RunItem {
+  margin-top: 15px;
+  background-color: #E4FFFA;
+
+  border-radius: 5%;
+}
+
+.RunItem__information {
+  padding: 20px 10px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.information__date {
+
+}
+
+.information__dis-time {
+
+}
+
+.information__pace {
+
+}
+
+.information__condition {
+
+}

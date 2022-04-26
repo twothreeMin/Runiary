@@ -1,7 +1,7 @@
 .runItemButton {
   margin-top: 15px;
   text-align: center;
-  border: 1px dashed #d2eef0;
+  border: 1px dashed #A3FFEE;
 }
 
 .plusButton {
@@ -25,4 +25,14 @@
 
 .runItemButton:hover .plusButton {
   color: #d2eef0;
+}
+
+@media screen and (max-width: 1024px) {
+  .plusButton {
+    margin: 10px 0px;
+    width: 30px;
+    height: 30px;
+
+    font-size: 22px;
+  }
 }
