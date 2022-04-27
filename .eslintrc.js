@@ -10,20 +10,26 @@ module.exports = {
   ],
   rules: {
     'arrow-body-style': ['error', 'always'],
+    'object-curly-newline': ['error', { multiline: true }],
     'react/jsx-filename-extension':
       ['error',
         { extensions: ['.js', '.jsx'] },
       ],
     'react/jsx-one-expression-per-line':
-      [1,
-        { allow: 'literal' },
+      [0,
+        { allow: 'none' },
       ],
     'react/function-component-definition':
-      [1,
+      ['warn',
         { namedComponents: 'arrow-function' },
       ],
     'no-unused-vars': 'off',
     'import/prefer-default-export': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
+    'jsx-a11y/no-static-element-interactions':
+      ['warn',
+        { handlers: ['onClick', 'onKeyUp'] },
+      ],
+    'no-console': 'off',
   },
 };
