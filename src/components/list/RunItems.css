@@ -1,0 +1,33 @@
+.runItem {
+  margin-top: 15px;
+  background-color: #e4fffa;
+}
+
+.runItem:hover {
+  border: 1px solid #89f7e2;
+  background: #89f7e2;
+  box-shadow: -3px -3px #abffee;
+}
+
+.runItem__information {
+  padding: 20px 10px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.information__date {
+}
+
+.information__distance {
+}
+
+.information__time {
+}
+
+.information__pace {
+}
+
+.information__condition {
+  font-size: 20px;
+}

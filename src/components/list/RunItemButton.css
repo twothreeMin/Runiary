@@ -1,7 +1,7 @@
 .runItemButton {
   margin-top: 15px;
   text-align: center;
-  border: 1px dashed #A3FFEE;
+  border: 1px dashed #a3ffee;
 }
 
 .plusButton {
@@ -12,18 +12,19 @@
   border: 1px dashed #d2eef0;
   border-radius: 50%;
 
-  color: #89F7E2;
+  color: #89f7e2;
   font-size: 36px;
 }
 
 .runItemButton:hover {
-  border: 1px solid #89F7E2;
-  background: #89F7E2;
-  box-shadow: -3px -3px #d2eef0;
+  border: 1px solid #89f7e2;
+  background: #a1ffec;
+  box-shadow: -3px -3px #abffee;
 }
 
 .runItemButton:hover .plusButton {
-  color: #d2eef0;
+  background: #d2eef0;
+  color: #a7fceb;
 }
 
 @media screen and (max-width: 1024px) {
