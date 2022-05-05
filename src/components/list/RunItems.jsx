@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './RunItems.css';
 
 export const RunItems = ({ runInfoList }) => {
+  console.log(runInfoList);
   return (
     <div className="runItems">
       <h3>{runInfoList.length}(개)의 기록이 있습니다.</h3>
@@ -26,9 +27,9 @@ export const RunItems = ({ runInfoList }) => {
 RunItems.propTypes = {
   runInfoList: PropTypes.arrayOf(
     PropTypes.exact({
-      id: PropTypes.number,
+      id: PropTypes.string,
       date: PropTypes.string,
-      distance: PropTypes.number,
+      distance: PropTypes.string,
       time: PropTypes.string,
       pace: PropTypes.string,
       condition: PropTypes.string,

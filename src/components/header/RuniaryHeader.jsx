@@ -1,4 +1,4 @@
-const RuniaryHeader = () => {
+export const RuniaryHeader = () => {
   return (
     <div className="RuniaryHeader">
       <h1>Runiary</h1>
@@ -6,5 +6,3 @@ const RuniaryHeader = () => {
     </div>
   );
 };
-
-export { RuniaryHeader };

@@ -1,51 +1,60 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-const RunRecord = () => {
+export const RuniaryForm = ({ onSaveRuniaryData }) => {
   const [enteredDistance, setEnteredDistance] = useState('');
   const [enteredTime, setEnteredTime] = useState('');
   const [enteredFeeling, setEnteredFeeling] = useState('');
+  const [enteredCondition, setEnteredCondition] = useState('');
 
   const distanceChangeHandler = (e) => {
     setEnteredDistance(e.target.value);
   };
 
   const timeChangeHandler = (e) => {
-    console.log(e.target.value);
     setEnteredTime(e.target.value);
   };
 
   const feelingChangeHandler = (e) => {
-    console.log(e.target.value);
     setEnteredFeeling(e.target.value);
+  };
+
+  const conditionChangeHandler = (e) => {
+    setEnteredCondition(e.target.value);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const runInfo = {
+    const runiaryData = {
       distance: enteredDistance,
       time: enteredTime,
       feeling: enteredFeeling,
+      condition: enteredCondition,
     };
 
-    console.log(runInfo);
-
+    onSaveRuniaryData(runiaryData);
     setEnteredDistance('');
     setEnteredTime('');
     setEnteredFeeling('');
+    setEnteredCondition('1');
   };
 
   return (
     <form onSubmit={submitHandler}>
       <div className="RunDiaryForm__condition">
         <label htmlFor="condition">Today Condition</label>
-        <select id="condition">
-          <option> 😆 </option>
-          <option> 😀 </option>
-          <option> 🙂 </option>
-          <option> 😨 </option>
-          <option> 🥵 </option>
-          <option> No running </option>
+        <select
+          id="condition"
+          value={enteredCondition}
+          onChange={conditionChangeHandler}
+        >
+          <option value="0"> No running </option>
+          <option value="1"> 😆 </option>
+          <option value="2"> 😀 </option>
+          <option value="3"> 🙂 </option>
+          <option value="4"> 😨 </option>
+          <option value="5"> 🥵 </option>
         </select>
       </div>
       <div className="RunDiaryForm__run-distance">
@@ -81,4 +90,4 @@ const RunRecord = () => {
   );
 };
 
-export { RunRecord };
+RuniaryForm.propTypes = { onSaveRuniaryData: PropTypes.func.isRequired };

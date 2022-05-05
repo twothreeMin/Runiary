@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import './RunItemButton.css';
 
-export const RunItemButton = ({ date, distance }) => {
+export const RunItemButton = () => {
   const handlerClick = () => {
     console.log('click!!');
   };
@@ -20,14 +20,6 @@ export const RunItemButton = ({ date, distance }) => {
       tabIndex={0}
     >
       <div className="plusButton">+</div>
-      <div className="test">{date}</div>
-      <div className="test2">{distance}</div>
     </div>
   );
-};
-
-RunItemButton.propTypes = {
-  date: PropTypes.number.isRequired,
-  distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    .isRequired,
 };
