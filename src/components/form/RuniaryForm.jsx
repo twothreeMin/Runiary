@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 export const RuniaryForm = ({ onSaveRuniaryData }) => {
+  const timeInput = useRef();
   const [enteredDistance, setEnteredDistance] = useState('');
-  const [enteredTime, setEnteredTime] = useState('');
+  const [enteredTime, setEnteredTime] = useState('00:00:00');
   const [enteredFeeling, setEnteredFeeling] = useState('');
   const [enteredCondition, setEnteredCondition] = useState('');
 
@@ -26,6 +27,15 @@ export const RuniaryForm = ({ onSaveRuniaryData }) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
+    const regex = /\d{2}:\d{2}:\d{2}/;
+
+    if (!regex.test(enteredTime)) {
+      alert('time form 양식에 어긋납니다.');
+      timeInput.current.style.borderColor = 'red';
+      setEnteredTime('00:00:00');
+      return;
+    }
+
     const runiaryData = {
       distance: enteredDistance,
       time: enteredTime,
@@ -35,7 +45,7 @@ export const RuniaryForm = ({ onSaveRuniaryData }) => {
 
     onSaveRuniaryData(runiaryData);
     setEnteredDistance('');
-    setEnteredTime('');
+    setEnteredTime('00:00:00');
     setEnteredFeeling('');
     setEnteredCondition('1');
   };
@@ -70,6 +80,7 @@ export const RuniaryForm = ({ onSaveRuniaryData }) => {
         <label htmlFor="run-time">Time</label>
         <input
           type="text"
+          ref={timeInput}
           placeholder="Ex) 00:15:30"
           value={enteredTime}
           onChange={timeChangeHandler}
