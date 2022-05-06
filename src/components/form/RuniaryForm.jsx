@@ -59,12 +59,12 @@ export const RuniaryForm = ({ onSaveRuniaryData }) => {
           value={enteredCondition}
           onChange={conditionChangeHandler}
         >
-          <option value="0"> No running </option>
-          <option value="1"> 😆 </option>
-          <option value="2"> 😀 </option>
-          <option value="3"> 🙂 </option>
-          <option value="4"> 😨 </option>
-          <option value="5"> 🥵 </option>
+          <option value="No running"> No running </option>
+          <option value="😆"> 😆 </option>
+          <option value="😀"> 😀 </option>
+          <option value="🙂"> 🙂 </option>
+          <option value="😨 "> 😨 </option>
+          <option value="🥵"> 🥵 </option>
         </select>
       </div>
       <div className="RunDiaryForm__run-distance">

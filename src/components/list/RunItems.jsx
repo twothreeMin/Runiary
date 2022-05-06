@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './RunItems.css';
 
 export const RunItems = ({ runInfoList }) => {
-  console.log(runInfoList);
   return (
     <div className="runItems">
       <h3>{runInfoList.length}(개)의 기록이 있습니다.</h3>

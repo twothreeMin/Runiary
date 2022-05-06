@@ -40,8 +40,19 @@ import { NewRuniary } from './components/form/NewRuniary';
 const App = () => {
   const [data, setData] = useState([]);
 
-  const onCreate = (rundata) => {
-    setData([rundata, ...data]);
+  const onCreate = (runData) => {
+    const timeSplit = runData.time.split(':');
+    const seconds = +timeSplit[0] * 60 + +timeSplit[1] + +timeSplit[2] / 60;
+    const paceMinutes = seconds / runData.distance;
+    const pace = (
+      Math.round((paceMinutes + Number.EPSILON) * 100) / 100
+    ).toString();
+    const newRunData = {
+      ...runData,
+      pace,
+    };
+    console.log(newRunData);
+    setData([runData, ...data]);
   };
 
   return (
