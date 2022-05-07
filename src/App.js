@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { RuniaryHeader } from './components/header/RuniaryHeader';
 import { RunItemButton } from './components/list/RunItemButton';
 import { RunItems } from './components/list/RunItems';
-import { NewRuniary } from './components/form/NewRuniary';
+import { Modal } from './components/form/Modal';
 
 // const dummyRunInfoList = [
 //   {
@@ -39,6 +39,7 @@ import { NewRuniary } from './components/form/NewRuniary';
 // ];
 const App = () => {
   const [data, setData] = useState([]);
+  const [open, setOpen] = useState();
 
   const onCreate = (runData) => {
     const timeSplit = runData.time.split(':');
@@ -51,15 +52,18 @@ const App = () => {
       ...runData,
       pace,
     };
-    console.log(newRunData);
-    setData([runData, ...data]);
+    setData([newRunData, ...data]);
+  };
+
+  const onClickOpenModal = (openModal) => {
+    setOpen(openModal);
   };
 
   return (
     <div className="App">
       <RuniaryHeader />
-      <NewRuniary onCreate={onCreate} />
-      <RunItemButton />
+      <Modal onCreate={onCreate} openModal={open} />
+      <RunItemButton onClickOpenModal={onClickOpenModal} />
       <RunItems runInfoList={data} />
     </div>
   );

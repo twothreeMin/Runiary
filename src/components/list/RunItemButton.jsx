@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 
 import './RunItemButton.css';
 
-export const RunItemButton = () => {
+export const RunItemButton = ({ onClickOpenModal }) => {
+  const [openModal, setOpenModal] = useState(false);
   const handlerClick = () => {
-    console.log('click!!');
+    setOpenModal(!openModal);
+    onClickOpenModal(openModal);
   };
 
   const handlerKeyUp = () => {
@@ -23,3 +26,4 @@ export const RunItemButton = () => {
     </div>
   );
 };
+RunItemButton.propTypes = { onClickOpenModal: PropTypes.func.isRequired };

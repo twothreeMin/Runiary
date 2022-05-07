@@ -7,6 +7,7 @@ export const RunItems = ({ runInfoList }) => {
     <div className="runItems">
       <h3>{runInfoList.length}(개)의 기록이 있습니다.</h3>
       {runInfoList.map((runInfo) => {
+        console.log(runInfo);
         return (
           <div className="runItem" key={runInfo.id}>
             <div className="runItem__information">
