@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-
-import './RunItems.css';
+import { RunItemsStyled } from './RunItems.styles';
 
 export const RunItems = ({ runInfoList }) => {
   return (
@@ -9,7 +8,7 @@ export const RunItems = ({ runInfoList }) => {
       {runInfoList.map((runInfo) => {
         console.log(runInfo);
         return (
-          <div className="runItem" key={runInfo.id}>
+          <RunItemsStyled key={runInfo.id}>
             <div className="runItem__information">
               <div className="information__date">{runInfo.date}</div>
               <div className="information__distance">{runInfo.distance}km</div>
@@ -17,7 +16,7 @@ export const RunItems = ({ runInfoList }) => {
               <div className="information__pace">{runInfo.pace}</div>
               <div className="information__condition">{runInfo.condition}</div>
             </div>
-          </div>
+          </RunItemsStyled>
         );
       })}
     </div>

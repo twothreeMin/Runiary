@@ -32,6 +32,7 @@ export const Modal = ({ onCreate, onClickCloseModal, openModal }) => {
     const regex = /\d{2}:\d{2}:\d{2}/;
 
     if (!regex.test(enteredTime)) {
+      // eslint-disable-next-line no-alert
       alert('time form 양식에 어긋납니다.');
       timeInput.current.style.borderColor = 'red';
       setEnteredTime('00:00:00');

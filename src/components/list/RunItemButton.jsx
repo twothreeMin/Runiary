@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-import './RunItemButton.css';
+import { RunItemButtonStyle } from './RunItemButton.styles';
 
 export const RunItemButton = ({ onClickOpenModal }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -10,20 +10,11 @@ export const RunItemButton = ({ onClickOpenModal }) => {
     onClickOpenModal(openModal);
   };
 
-  const handlerKeyUp = () => {
-    console.log('keyup!!');
-  };
-
   return (
-    <div
-      role="button"
-      className="runItemButton"
-      onClick={handlerClick}
-      onKeyUp={handlerKeyUp}
-      tabIndex={0}
-    >
+    <RunItemButtonStyle onClick={handlerClick}>
       <div className="plusButton">+</div>
-    </div>
+    </RunItemButtonStyle>
   );
 };
+
 RunItemButton.propTypes = { onClickOpenModal: PropTypes.func.isRequired };
