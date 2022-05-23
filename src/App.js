@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { RuniaryHeader } from './components/header/RuniaryHeader';
 import { RunItemButton } from './components/list/RunItemButton';
 import { RunItems } from './components/list/RunItems';
-import { Modal } from './components/form/Modal';
+import { Modal } from './components/modal/Modal';
 
 const App = () => {
   const [data, setData] = useState([]);
-  const [open, setOpen] = useState();
+  const [open, setOpen] = useState(false);
 
   const onCreate = (runData) => {
     const timeSplit = runData.time.split(':');
@@ -26,6 +26,7 @@ const App = () => {
   };
 
   const onClickOpenModal = () => {
+    console.log(open);
     setOpen(true);
   };
 

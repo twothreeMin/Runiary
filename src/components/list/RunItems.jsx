@@ -1,5 +1,30 @@
 import PropTypes from 'prop-types';
-import { RunItemsStyled } from './RunItems.styles';
+import styled from 'styled-components';
+
+const RunItemsStyled = styled.div`
+  & {
+    margin-top: 15px;
+    background-color: #e4fffa;
+  }
+
+  &:hover {
+    border: 1px solid #89f7e2;
+    background: #89f7e2;
+    box-shadow: -3px -3px #abffee;
+  }
+
+  .runItem__information {
+    padding: 20px 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .information__condition {
+    font-size: 20px;
+  }
+`;
 
 export const RunItems = ({ runInfoList }) => {
   return (
