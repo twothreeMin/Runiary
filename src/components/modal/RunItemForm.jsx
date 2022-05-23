@@ -2,8 +2,13 @@ import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
+import { Button } from '../UI/Button';
+
+const RunItemFormStyled = styled.form`
+  background: #ffffff;
+`;
+
 export const RunItemForm = ({ onCreate, onClickCloseModal }) => {
-  console.log('RunItemForm', onClickCloseModal);
   const timeInput = useRef();
   const [enteredDistance, setEnteredDistance] = useState('');
   const [enteredTime, setEnteredTime] = useState('00:00:00');
@@ -59,7 +64,7 @@ export const RunItemForm = ({ onCreate, onClickCloseModal }) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <RunItemFormStyled onSubmit={submitHandler}>
       <div className="RunDiaryForm__condition">
         <label htmlFor="condition">Today Condition</label>
         <select
@@ -104,11 +109,11 @@ export const RunItemForm = ({ onCreate, onClickCloseModal }) => {
           onChange={feelingChangeHandler}
         />
       </div>
-      <button type="submit">등록</button>
-      <button type="button" onClick={onClickHandler}>
+      <Button type="submit">등록</Button>
+      <Button type="button" onClick={onClickHandler}>
         닫기
-      </button>
-    </form>
+      </Button>
+    </RunItemFormStyled>
   );
 };
 

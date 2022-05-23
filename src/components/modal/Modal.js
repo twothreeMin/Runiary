@@ -25,6 +25,7 @@ const ModalStyled = styled.div`
   &.openModal {
     display: flex;
     align-items: center;
+    justify-content: center;
     /* 팝업이 열릴때 스르륵 열리는 효과 */
     animation: modal-bg-show 0.3s;
   }

@@ -28,5 +28,6 @@ module.exports = {
       { handlers: ['onClick', 'onKeyUp'] },
     ],
     'no-console': 'off',
+    'react/button-has-type': 'off', // 단축평가로 button, submit을 판단하고 사용할 것이기 때문에 off
   },
 };
