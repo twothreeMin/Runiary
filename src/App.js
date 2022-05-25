@@ -2,9 +2,9 @@ import './App.css';
 
 import { useState } from 'react';
 import { RuniaryHeader } from './components/header/RuniaryHeader';
-import { RunItemButton } from './components/list/RunItemButton';
-import { RunItems } from './components/list/RunItems';
-import { Modal } from './components/modal/Modal';
+import { RunItemButton } from './components/list/runItemButton/index';
+import { RunItem } from './components/list/runItem/index';
+import { RunItemFormModal } from './components/modal/index';
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -37,13 +37,13 @@ const App = () => {
   return (
     <div className="App">
       <RuniaryHeader />
-      <Modal
+      <RunItemFormModal
         onCreate={onCreate}
         onClickCloseModal={onClickCloseModal}
         openModal={open}
       />
       <RunItemButton onClickOpenModal={onClickOpenModal} />
-      <RunItems runInfoList={data} />
+      <RunItem runInfoList={data} />
     </div>
   );
 };

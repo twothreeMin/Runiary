@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { Button } from '../UI/Button';
+import { Button } from '../ui/button/index';
 
 const RunItemFormStyled = styled.form`
   background: #ffffff;

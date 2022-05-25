@@ -1,8 +1,6 @@
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const RunItemButtonStyled = styled.button`
+export const AddingButton = styled.button`
   & {
     margin: 15px 0px;
     text-align: center;
@@ -42,17 +40,3 @@ const RunItemButtonStyled = styled.button`
     }
   }
 `;
-
-export const RunItemButton = ({ onClickOpenModal }) => {
-  const handlerClick = () => {
-    onClickOpenModal();
-  };
-
-  return (
-    <RunItemButtonStyled onClick={handlerClick}>
-      <div className="plusButton">+</div>
-    </RunItemButtonStyled>
-  );
-};
-
-RunItemButton.propTypes = { onClickOpenModal: PropTypes.func.isRequired };

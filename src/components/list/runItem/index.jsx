@@ -1,39 +1,15 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
-const RunItemsStyled = styled.div`
-  & {
-    margin-top: 15px;
-    background-color: #e4fffa;
-  }
+import { RunItemCard } from './style';
 
-  &:hover {
-    border: 1px solid #89f7e2;
-    background: #89f7e2;
-    box-shadow: -3px -3px #abffee;
-  }
-
-  .runItem__information {
-    padding: 20px 10px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .information__condition {
-    font-size: 20px;
-  }
-`;
-
-export const RunItems = ({ runInfoList }) => {
+export const RunItem = ({ runInfoList }) => {
   return (
     <div className="runItems">
       <h3>{runInfoList.length}(개)의 기록이 있습니다.</h3>
       {runInfoList.map((runInfo) => {
         console.log(runInfo);
         return (
-          <RunItemsStyled key={runInfo.id}>
+          <RunItemCard key={runInfo.id}>
             <div className="runItem__information">
               <div className="information__date">{runInfo.date}</div>
               <div className="information__distance">{runInfo.distance}km</div>
@@ -41,14 +17,14 @@ export const RunItems = ({ runInfoList }) => {
               <div className="information__pace">{runInfo.pace}</div>
               <div className="information__condition">{runInfo.condition}</div>
             </div>
-          </RunItemsStyled>
+          </RunItemCard>
         );
       })}
     </div>
   );
 };
 
-RunItems.propTypes = {
+RunItem.propTypes = {
   runInfoList: PropTypes.arrayOf(
     PropTypes.exact({
       id: PropTypes.string,

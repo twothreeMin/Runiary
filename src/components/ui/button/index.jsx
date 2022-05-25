@@ -1,16 +1,12 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
-const ButtonStyled = styled.button`
-  background: #abffee;
-  margin: 0.3rem;
-`;
+import { SimpleButton } from './style';
 
 export const Button = ({ type, ...props }) => {
   return (
-    <ButtonStyled type={type || 'button'} onClick={props.onClick}>
+    <SimpleButton type={type || 'button'} onClick={props.onClick}>
       {props.children}
-    </ButtonStyled>
+    </SimpleButton>
   );
 };
 
