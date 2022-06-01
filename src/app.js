@@ -1,7 +1,7 @@
 import './App.css';
 
 import { useState } from 'react';
-import { RuniaryHeader } from './components/header/RuniaryHeader';
+import { RuniaryHeader } from './components/header/runiaryHeader';
 import { RunItemButton } from './components/list/runItemButton/index';
 import { RunItem } from './components/list/runItem/index';
 import { RunItemFormModal } from './components/modal/index';

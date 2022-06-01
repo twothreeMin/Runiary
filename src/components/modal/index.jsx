@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { RunItemForm } from './RunItemForm';
+import { RunItemForm } from './runItemForm';
 import { Modal } from './style';
 
 export const RunItemFormModal = ({
