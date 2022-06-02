@@ -1,10 +1,10 @@
-import './App.css';
+import './app.css';
 
 import { useState } from 'react';
 import { RuniaryHeader } from './components/header/runiaryHeader';
-import { RunItemButton } from './components/list/runItemButton/index';
-import { RunItem } from './components/list/runItem/index';
-import { RunItemFormModal } from './components/modal/index';
+import { RunItemButton } from './components/list/runItemButton';
+import { RunItem } from './components/list/runItem';
+import { RunItemFormModal } from './components/modal';
 
 const App = () => {
   const [data, setData] = useState([]);
