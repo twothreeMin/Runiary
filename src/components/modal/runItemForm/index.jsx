@@ -5,53 +5,36 @@ import { Button } from '../../ui/button';
 import { RuniaryInputForm } from './style';
 
 export const RunItemForm = ({ onCreate, onClickCloseModal }) => {
-  const timeInput = useRef();
-  const [enteredDistance, setEnteredDistance] = useState('');
-  const [enteredTime, setEnteredTime] = useState('00:00:00');
-  const [enteredFeeling, setEnteredFeeling] = useState('');
-  const [enteredCondition, setEnteredCondition] = useState('');
-
-  const distanceChangeHandler = (e) => {
-    setEnteredDistance(e.target.value);
-  };
-
-  const timeChangeHandler = (e) => {
-    setEnteredTime(e.target.value);
-  };
-
-  const feelingChangeHandler = (e) => {
-    setEnteredFeeling(e.target.value);
-  };
-
-  const conditionChangeHandler = (e) => {
-    setEnteredCondition(e.target.value);
-  };
+  const runDistanceInput = useRef();
+  const runTimeInput = useRef();
+  const runFeelingInput = useRef();
+  const runConditionInput = useRef();
 
   const submitHandler = (e) => {
     e.preventDefault();
 
     const regex = /\d{2}:\d{2}:\d{2}/;
 
-    if (!regex.test(enteredTime)) {
+    if (!regex.test(runTimeInput.current.value)) {
       // eslint-disable-next-line no-alert
       alert('time form 양식에 어긋납니다.');
-      timeInput.current.style.borderColor = 'red';
-      setEnteredTime('00:00:00');
+      runTimeInput.current.style.borderColor = 'red';
+      runTimeInput.current.value = '00:00:00';
       return;
     }
 
     const runiaryData = {
-      distance: enteredDistance,
-      time: enteredTime,
-      feeling: enteredFeeling,
-      condition: enteredCondition,
+      distance: runDistanceInput.current.value,
+      time: runTimeInput.current.value,
+      feeling: runFeelingInput.current.value,
+      condition: runConditionInput.current.value,
     };
 
     onCreate(runiaryData);
-    setEnteredDistance('');
-    setEnteredTime('00:00:00');
-    setEnteredFeeling('');
-    setEnteredCondition('1');
+    runDistanceInput.current.value = '';
+    runTimeInput.current.value = '00:00:00';
+    runFeelingInput.current.value = '';
+    runConditionInput.current.value = '1';
     onClickCloseModal();
   };
 
@@ -63,11 +46,7 @@ export const RunItemForm = ({ onCreate, onClickCloseModal }) => {
     <RuniaryInputForm onSubmit={submitHandler}>
       <div className="RunDiaryForm__condition">
         <label htmlFor="condition">Today Condition</label>
-        <select
-          id="condition"
-          value={enteredCondition}
-          onChange={conditionChangeHandler}
-        >
+        <select id="condition" ref={runConditionInput}>
           <option value="No running"> No running </option>
           <option value="😆"> 😆 </option>
           <option value="😀"> 😀 </option>
@@ -78,32 +57,15 @@ export const RunItemForm = ({ onCreate, onClickCloseModal }) => {
       </div>
       <div className="RunDiaryForm__run-distance">
         <label htmlFor="run-distance">Distance</label>
-        <input
-          type="text"
-          placeholder="Ex) 3"
-          value={enteredDistance}
-          onChange={distanceChangeHandler}
-        />
+        <input type="text" placeholder="Ex) 3" ref={runDistanceInput} />
       </div>
       <div className="RunDiaryForm__run-time">
         <label htmlFor="run-time">Time</label>
-        <input
-          type="text"
-          ref={timeInput}
-          placeholder="Ex) 00:15:30"
-          value={enteredTime}
-          onChange={timeChangeHandler}
-        />
+        <input type="text" ref={runTimeInput} placeholder="Ex) 00:15:30" />
       </div>
       <div className="RunDiaryForm__run-feeling">
         <label htmlFor="run-feeling">How are you feeling today?</label>
-        <textarea
-          name="feeling"
-          cols="30"
-          rows="10"
-          value={enteredFeeling}
-          onChange={feelingChangeHandler}
-        />
+        <textarea name="feeling" cols="30" rows="10" ref={runFeelingInput} />
       </div>
       <Button type="submit">등록</Button>
       <Button type="button" onClick={onClickHandler}>
