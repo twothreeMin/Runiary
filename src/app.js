@@ -1,4 +1,4 @@
-import './app.css';
+import styled from 'styled-components';
 
 import { useState } from 'react';
 import { RuniaryHeader } from './components/header/runiaryHeader';
@@ -6,11 +6,24 @@ import { RunItemButton } from './components/list/runItemButton';
 import { RunItem } from './components/list/runItem';
 import { RunItemFormModal } from './components/modal';
 
+const Runiary = styled.div`
+  & {
+    text-align: center;
+    padding: 40px 230px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    & {
+      padding: 40px 10px;
+    }
+  }
+`;
+
 const App = () => {
   const [data, setData] = useState([]);
   const [open, setOpen] = useState(false);
 
-  const onCreate = (runData) => {
+  const onAddingRunItem = (runData) => {
     const timeSplit = runData.time.split(':');
     const seconds = +timeSplit[0] * 60 + +timeSplit[1] + +timeSplit[2] / 60;
     const paceMinutes = seconds / runData.distance;
@@ -35,16 +48,16 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <Runiary>
       <RuniaryHeader />
       <RunItemFormModal
-        onCreate={onCreate}
+        onAddingRunItem={onAddingRunItem}
         onClickCloseModal={onClickCloseModal}
         openModal={open}
       />
       <RunItemButton onClickOpenModal={onClickOpenModal} />
       <RunItem runInfoList={data} />
-    </div>
+    </Runiary>
   );
 };
 

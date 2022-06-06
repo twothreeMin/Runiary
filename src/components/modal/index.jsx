@@ -4,19 +4,22 @@ import { RunItemForm } from './runItemForm';
 import { Modal } from './style';
 
 export const RunItemFormModal = ({
-  onCreate,
+  onAddingRunItem,
   onClickCloseModal,
   openModal,
 }) => {
   return (
     <Modal className={openModal && 'openModal'}>
-      <RunItemForm onCreate={onCreate} onClickCloseModal={onClickCloseModal} />
+      <RunItemForm
+        onAddingRunItem={onAddingRunItem}
+        onClickCloseModal={onClickCloseModal}
+      />
     </Modal>
   );
 };
 
 RunItemFormModal.propTypes = {
-  onCreate: PropTypes.func.isRequired,
+  onAddingRunItem: PropTypes.func.isRequired,
   onClickCloseModal: PropTypes.func.isRequired,
   openModal: PropTypes.bool.isRequired,
 };

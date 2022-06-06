@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 import { Button } from '../../ui/button';
 import { RuniaryInputForm } from './style';
 
-export const RunItemForm = ({ onCreate, onClickCloseModal }) => {
+export const RunItemForm = ({ onAddingRunItem, onClickCloseModal }) => {
   const runDistanceInput = useRef();
   const runTimeInput = useRef();
   const runFeelingInput = useRef();
@@ -30,7 +30,7 @@ export const RunItemForm = ({ onCreate, onClickCloseModal }) => {
       condition: runConditionInput.current.value,
     };
 
-    onCreate(runiaryData);
+    onAddingRunItem(runiaryData);
     runDistanceInput.current.value = '';
     runTimeInput.current.value = '00:00:00';
     runFeelingInput.current.value = '';
@@ -38,7 +38,7 @@ export const RunItemForm = ({ onCreate, onClickCloseModal }) => {
     onClickCloseModal();
   };
 
-  const onClickHandler = () => {
+  const closeModal = () => {
     onClickCloseModal();
   };
 
@@ -61,14 +61,14 @@ export const RunItemForm = ({ onCreate, onClickCloseModal }) => {
       </div>
       <div className="RunDiaryForm__run-time">
         <label htmlFor="run-time">Time</label>
-        <input type="text" ref={runTimeInput} placeholder="Ex) 00:15:30" />
+        <input type="text" ref={runTimeInput} />
       </div>
       <div className="RunDiaryForm__run-feeling">
         <label htmlFor="run-feeling">How are you feeling today?</label>
         <textarea name="feeling" cols="30" rows="10" ref={runFeelingInput} />
       </div>
       <Button type="submit">등록</Button>
-      <Button type="button" onClick={onClickHandler}>
+      <Button type="button" onClick={closeModal}>
         닫기
       </Button>
     </RuniaryInputForm>
@@ -76,6 +76,6 @@ export const RunItemForm = ({ onCreate, onClickCloseModal }) => {
 };
 
 RunItemForm.propTypes = {
-  onCreate: PropTypes.func.isRequired,
+  onAddingRunItem: PropTypes.func.isRequired,
   onClickCloseModal: PropTypes.func.isRequired,
 };
