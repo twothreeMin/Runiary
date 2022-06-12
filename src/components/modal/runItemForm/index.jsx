@@ -4,11 +4,20 @@ import React, { useRef } from 'react';
 import { Button } from '../../ui/button';
 import { RuniaryInputForm } from './style';
 
+const initData = (...data) => {
+  console.log(data);
+};
+
 export const RunItemForm = ({ onAddingRunItem, onClickCloseModal }) => {
   const runDistanceInput = useRef();
   const runTimeInput = useRef();
   const runFeelingInput = useRef();
   const runConditionInput = useRef();
+
+  runDistanceInput.current.value = null;
+  runTimeInput.current.value = '00:00:00';
+  runFeelingInput.current.value = null;
+  runConditionInput.current.value = '1';
 
   const submitHandler = (e) => {
     e.preventDefault();

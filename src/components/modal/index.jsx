@@ -1,3 +1,4 @@
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 import { RunItemForm } from './runItemForm';
@@ -9,12 +10,17 @@ export const RunItemFormModal = ({
   openModal,
 }) => {
   return (
-    <Modal className={openModal && 'openModal'}>
-      <RunItemForm
-        onAddingRunItem={onAddingRunItem}
-        onClickCloseModal={onClickCloseModal}
-      />
-    </Modal>
+    <>
+      {ReactDOM.createPortal(
+        <Modal className={openModal && 'openModal'}>
+          <RunItemForm
+            onAddingRunItem={onAddingRunItem}
+            onClickCloseModal={onClickCloseModal}
+          />
+        </Modal>,
+        document.getElementById('modal-root'),
+      )}
+    </>
   );
 };
 
