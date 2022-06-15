@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { useState } from 'react';
-import { RuniaryHeader } from './components/header/runiaryHeader';
+import { useEffect, useState } from 'react';
+import { RuniaryHeader } from './components/runiaryHeader';
 import { RunItemButton } from './components/list/runItemButton';
 import { RunItem } from './components/list/runItem';
 import { RunItemFormModal } from './components/modal';
@@ -20,31 +20,36 @@ const Runiary = styled.div`
 `;
 
 const App = () => {
-  const [data, setData] = useState([]);
-  const [open, setOpen] = useState(false);
+  const localData = JSON.parse(localStorage.getItem('runiary'));
+  const [runData, setRunData] = useState([...localData]);
+  const [openModal, setOpenModal] = useState(false);
 
-  const onAddingRunItem = (runData) => {
-    const timeSplit = runData.time.split(':');
+  useEffect(() => {
+    console.log('Update!');
+    localStorage.setItem('runiary', JSON.stringify(runData));
+  }, [runData]);
+
+  const onAddingRunItem = (runningData) => {
+    const timeSplit = runningData.time.split(':');
     const seconds = +timeSplit[0] * 60 + +timeSplit[1] + +timeSplit[2] / 60;
-    const paceMinutes = seconds / runData.distance;
+    const paceMinutes = seconds / runningData.distance;
     const pace = (
       Math.round((paceMinutes + Number.EPSILON) * 100) / 100
     ).toString();
     const newRunData = {
-      ...runData,
+      ...runningData,
       pace,
       id: Math.random().toString(),
     };
-    setData([newRunData, ...data]);
+    setRunData([newRunData, ...runData]);
   };
 
   const onClickOpenModal = () => {
-    console.log(open);
-    setOpen(true);
+    setOpenModal(true);
   };
 
   const onClickCloseModal = () => {
-    setOpen(false);
+    setOpenModal(false);
   };
 
   return (
@@ -53,10 +58,10 @@ const App = () => {
       <RunItemFormModal
         onAddingRunItem={onAddingRunItem}
         onClickCloseModal={onClickCloseModal}
-        openModal={open}
+        openModal={openModal}
       />
       <RunItemButton onClickOpenModal={onClickOpenModal} />
-      <RunItem runInfoList={data} />
+      <RunItem runInfoList={runData} />
     </Runiary>
   );
 };
