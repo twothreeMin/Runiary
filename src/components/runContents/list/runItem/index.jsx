@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { RunItemCard } from './style';
 
 export const RunItem = ({ runInfoList }) => {
-  return (
+  console.log(runInfoList);
+  return runInfoList ? (
     <div className="runItems">
       <h3>{runInfoList.length}(개)의 기록이 있습니다.</h3>
       {runInfoList.map((runInfo) => {
@@ -20,6 +21,8 @@ export const RunItem = ({ runInfoList }) => {
         );
       })}
     </div>
+  ) : (
+    <div />
   );
 };
 
