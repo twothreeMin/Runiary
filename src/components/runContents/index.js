@@ -3,10 +3,16 @@ import { RunItemButton } from './list/runItemButton';
 import { RunItem } from './list/runItem';
 import { RunItemFormModal } from './modal';
 
+const initLocalData = () => {
+  if (!localStorage.getItem('runiary'))
+    localStorage.setItem('runiary', JSON.stringify([]));
+};
+
 export const RunContents = () => {
-  const [runData, setRunData] = useState(() => {
-    return JSON.parse(localStorage.getItem('runiary') || []);
-  });
+  initLocalData();
+  const [runData, setRunData] = useState(
+    JSON.parse(localStorage.getItem('runiary')),
+  );
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
