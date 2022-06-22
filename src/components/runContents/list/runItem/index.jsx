@@ -10,13 +10,13 @@ export const RunItem = ({ runInfoList }) => {
       {runInfoList.map((runInfo) => {
         return (
           <RunItemCard key={runInfo.id}>
-            <div className="runItem__information">
-              <div className="information__date">{runInfo.date}</div>
-              <div className="information__distance">{runInfo.distance}km</div>
-              <div className="information__time">{runInfo.time}</div>
-              <div className="information__pace">{runInfo.pace}</div>
-              <div className="information__condition">{runInfo.condition}</div>
-            </div>
+            <ul className="runItem__information">
+              <li className="information__date">{runInfo.date}</li>
+              <li className="information__distance">{runInfo.distance}km</li>
+              <li className="information__time">{runInfo.time}</li>
+              <li className="information__pace">{runInfo.pace}</li>
+              <li className="information__condition">{runInfo.condition}</li>
+            </ul>
           </RunItemCard>
         );
       })}
