@@ -4,8 +4,10 @@ import { RunItem } from './list/runItem';
 import { RunItemFormModal } from './modal';
 
 const initLocalData = () => {
-  if (!localStorage.getItem('runiary'))
-    localStorage.setItem('runiary', JSON.stringify([]));
+  return (
+    localStorage.getItem('runiary') ||
+    localStorage.setItem('runiary', JSON.stringify([]))
+  );
 };
 
 export const RunContents = () => {
