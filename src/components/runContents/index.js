@@ -1,21 +1,11 @@
 import { useEffect, useState } from 'react';
-import { RunItemButton } from './list/runItemButton';
-import { RunItem } from './list/runItem';
-import { RunItemFormModal } from './modal';
-
-const initLocalData = () => {
-  return (
-    localStorage.getItem('runiary') ||
-    localStorage.setItem('runiary', JSON.stringify([]))
-  );
-};
+import { AddRunItem } from './addRunItem';
+import { RunItem } from './runItem';
 
 export const RunContents = () => {
-  initLocalData();
   const [runData, setRunData] = useState(
     JSON.parse(localStorage.getItem('runiary')),
   );
-  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     console.log('Update!');
@@ -37,22 +27,9 @@ export const RunContents = () => {
     setRunData([newRunData, ...runData]);
   };
 
-  const onClickOpenModal = () => {
-    setOpenModal(true);
-  };
-
-  const onClickCloseModal = () => {
-    setOpenModal(false);
-  };
-
   return (
     <>
-      <RunItemFormModal
-        onAddingRunItem={onAddingRunItem}
-        onClickCloseModal={onClickCloseModal}
-        openModal={openModal}
-      />
-      <RunItemButton onClickOpenModal={onClickOpenModal} />
+      <AddRunItem onAddingRunItem={onAddingRunItem} />
       <RunItem runInfoList={runData} />
     </>
   );

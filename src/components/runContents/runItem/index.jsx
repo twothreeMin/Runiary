@@ -1,9 +1,9 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { RunItemCard } from './style';
 
-export const RunItem = ({ runInfoList }) => {
-  console.log(runInfoList);
+export const RunItem = React.memo(({ runInfoList }) => {
   return runInfoList ? (
     <div className="runItems">
       <h3>{runInfoList.length}(개)의 기록이 있습니다.</h3>
@@ -24,7 +24,7 @@ export const RunItem = ({ runInfoList }) => {
   ) : (
     <div />
   );
-};
+});
 
 RunItem.propTypes = {
   runInfoList: PropTypes.arrayOf(
