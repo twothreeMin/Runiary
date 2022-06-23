@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { RunItemFormModal } from './modal';
-import { RunItemButton } from './runItemButton';
+import { OpenModalButton } from './openModalButton/index';
 
 const initLocalData = () => {
   return (
@@ -29,7 +29,7 @@ export const AddRunItem = ({ onAddingRunItem }) => {
         onClickCloseModal={onClickCloseModal}
         openModal={openModal}
       />
-      <RunItemButton onClickOpenModal={onClickOpenModal} />
+      <OpenModalButton onClickOpenModal={onClickOpenModal} />
     </>
   );
 };

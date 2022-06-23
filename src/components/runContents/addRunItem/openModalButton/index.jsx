@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AddingButton } from './style';
 
-export const RunItemButton = React.memo(({ onClickOpenModal }) => {
+export const OpenModalButton = React.memo(({ onClickOpenModal }) => {
   const openModal = () => {
     onClickOpenModal();
   };
@@ -15,4 +15,4 @@ export const RunItemButton = React.memo(({ onClickOpenModal }) => {
   );
 });
 
-RunItemButton.propTypes = { onClickOpenModal: PropTypes.func.isRequired };
+OpenModalButton.propTypes = { onClickOpenModal: PropTypes.func.isRequired };
