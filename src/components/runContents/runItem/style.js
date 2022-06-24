@@ -20,7 +20,7 @@ export const RunItemCard = styled.div`
     align-items: center;
   }
 
-  .information__condition {
+  .runItem__information > li {
     font-size: 20px;
   }
 `;

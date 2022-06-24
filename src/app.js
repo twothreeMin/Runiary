@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { RuniaryHeader } from './components/runiaryHeader';
-import { RunContents } from './components/runContents';
+import { SideMenu } from './components/sideMenu';
+import { Home } from './pages/home';
+import { Rank } from './pages/rank';
 
 const Runiary = styled.div`
   & {
@@ -18,10 +21,16 @@ const Runiary = styled.div`
 
 const App = () => {
   return (
-    <Runiary>
-      <RuniaryHeader />
-      <RunContents />
-    </Runiary>
+    <BrowserRouter>
+      <Runiary>
+        <RuniaryHeader />
+        <SideMenu />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/rank" element={<Rank />} />
+        </Routes>
+      </Runiary>
+    </BrowserRouter>
   );
 };
 

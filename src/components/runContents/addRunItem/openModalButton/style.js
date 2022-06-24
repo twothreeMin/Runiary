@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const AddingButton = styled.button`
   & {
-    margin: 15px 0px;
+    margin: 20px 0px;
     text-align: center;
     border: 1px dashed #a3ffee;
     background: #ffffff;
