@@ -4,7 +4,7 @@ export const SubMenu = styled.div`
   & {
     height: 100%;
     width: ${(props) => {
-      return props.openSideMenu ? '240px' : '0px';
+      return props.openSideMenu ? '210px' : '0px';
     }};
     position: fixed;
     z-index: 1;
@@ -30,8 +30,13 @@ export const SubMenu = styled.div`
   }
 
   & svg {
-    font-size: 2.3rem;
+    font-size: 2rem;
     vertical-align: bottom;
-    margin: 0 1rem 0 0.8rem;
+    margin: 0 1rem 0 1.4rem;
+  }
+
+  & span {
+    margin: 0 1rem 0 1.4rem;
+    font-size: 1.6rem;
   }
 `;
