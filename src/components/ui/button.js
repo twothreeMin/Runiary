@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import { SimpleButton } from './style';
+export const SimpleButton = styled.button`
+  background: #abffee;
+  margin: 0.3rem;
+`;
 
 export const Button = ({ type, ...props }) => {
   return (

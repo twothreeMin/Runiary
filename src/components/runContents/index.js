@@ -26,6 +26,7 @@ export const RunContents = () => {
   }, [runData]);
 
   const onAddingRunItem = (runningData) => {
+    console.log({ ...runningData });
     const date = new Date().toLocaleDateString('ko-KR');
     const pace = getRunTime(runningData);
     const newRunData = {
