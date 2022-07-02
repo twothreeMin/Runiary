@@ -7,12 +7,17 @@ const initLocalData = () => {
     localStorage.setItem('runiary', JSON.stringify([]));
 };
 
-const getRunTime = (data) => {
-  const timeSplit = data.time.split(':');
-  const seconds = +timeSplit[0] * 60 + +timeSplit[1] + +timeSplit[2] / 60;
-  const paceMinutes = seconds / data.distance;
-
-  return (Math.round((paceMinutes + Number.EPSILON) * 100) / 100).toString();
+const getPace = ({ runTime, distance }) => {
+  return (
+    Math.round(
+      ((Number(runTime.hour) * 60 +
+        Number(runTime.min) +
+        Number(runTime.sec) / 60) /
+        distance +
+        Number.EPSILON) *
+        100,
+    ) / 100
+  ).toString();
 };
 
 export const RunContents = () => {
@@ -25,14 +30,11 @@ export const RunContents = () => {
     localStorage.setItem('runiary', JSON.stringify(runData));
   }, [runData]);
 
-  const onAddingRunItem = (runningData) => {
-    console.log({ ...runningData });
-    const date = new Date().toLocaleDateString('ko-KR');
-    const pace = getRunTime(runningData);
+  const appendRunItem = (runningData) => {
     const newRunData = {
       ...runningData,
-      date,
-      pace,
+      date: new Date().toLocaleDateString('ko-KR'),
+      pace: getPace(runningData),
       id: Math.random().toString(),
     };
     setRunData([newRunData, ...runData]);
@@ -40,7 +42,7 @@ export const RunContents = () => {
 
   return (
     <>
-      <AddRunItem onAddingRunItem={onAddingRunItem} />
+      <AddRunItem appendRunItem={appendRunItem} />
       <RunItem runInfoList={runData} />
     </>
   );

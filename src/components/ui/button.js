@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export const SimpleButton = styled.button`
   background: #abffee;
   margin: 0.3rem;
+  padding: 10px 30px;
 `;
 
 export const Button = ({ type, ...props }) => {

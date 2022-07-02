@@ -10,7 +10,7 @@ const initLocalData = () => {
   );
 };
 
-export const AddRunItem = ({ onAddingRunItem }) => {
+export const AddRunItem = ({ appendRunItem }) => {
   initLocalData();
   const [openModal, setOpenModal] = useState(false);
 
@@ -25,7 +25,7 @@ export const AddRunItem = ({ onAddingRunItem }) => {
   return (
     <>
       <RunItemFormModal
-        onAddingRunItem={onAddingRunItem}
+        appendRunItem={appendRunItem}
         onClickCloseModal={onClickCloseModal}
         openModal={openModal}
       />
@@ -34,4 +34,4 @@ export const AddRunItem = ({ onAddingRunItem }) => {
   );
 };
 
-AddRunItem.propTypes = { onAddingRunItem: PropTypes.func.isRequired };
+AddRunItem.propTypes = { appendRunItem: PropTypes.func.isRequired };

@@ -5,7 +5,7 @@ import { RunItemForm } from './runItemForm';
 import { Modal } from './style';
 
 export const RunItemFormModal = ({
-  onAddingRunItem,
+  appendRunItem,
   onClickCloseModal,
   openModal,
 }) => {
@@ -14,7 +14,7 @@ export const RunItemFormModal = ({
       {ReactDOM.createPortal(
         <Modal className={openModal && 'openModal'}>
           <RunItemForm
-            onAddingRunItem={onAddingRunItem}
+            appendRunItem={appendRunItem}
             onClickCloseModal={onClickCloseModal}
           />
         </Modal>,
@@ -25,7 +25,7 @@ export const RunItemFormModal = ({
 };
 
 RunItemFormModal.propTypes = {
-  onAddingRunItem: PropTypes.func.isRequired,
+  appendRunItem: PropTypes.func.isRequired,
   onClickCloseModal: PropTypes.func.isRequired,
   openModal: PropTypes.bool.isRequired,
 };

@@ -1,34 +1,41 @@
 import PropTypes from 'prop-types';
 import React, { useState, useRef } from 'react';
-import { TextInput } from 'grommet';
+import { FormField, Select, TextInput, TextArea } from 'grommet';
 import { Button } from '../../../../ui/button';
 import { RuniaryInputForm } from './style';
 
-export const RunItemForm = ({ onAddingRunItem, onClickCloseModal }) => {
-  const runDistanceInput = useRef();
-  const runTimeInput = useRef();
-  const runFeelingInput = useRef();
+const conditions = ['No running', '😆', '😀', '🙂', '😨', '🥵'];
+
+export const RunItemForm = ({ appendRunItem, onClickCloseModal }) => {
+  const runDistance = useRef('');
+  const runTimeHour = useRef('00');
+  const runTimeMinutes = useRef('00');
+  const runTimeSeconds = useRef('00');
+  const runFeel = useRef('');
   const [runCondition, setRunCondition] = useState('');
-  const runConditionInput = useRef();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const regex = /\d{2}:\d{2}:\d{2}/;
+    // const regex = /\d{2}:\d{2}:\d{2}/;
 
-    if (!regex.test(runTimeInput.current.value)) {
-      runTimeInput.current.style.borderColor = 'red';
-      runTimeInput.current.value = '00:00:00';
-      return;
-    }
+    // if (!regex.test(runTimeInput.current.value)) {
+    //   runTimeInput.current.style.borderColor = 'red';
+    //   runTimeInput.current.value = '00:00:00';
+    //   return;
+    // }
 
     const runiaryData = {
-      distance: runDistanceInput.current.value,
-      time: runTimeInput.current.value,
-      feeling: runFeelingInput.current.value,
-      condition: runConditionInput.current.value,
+      distance: runDistance.current.value,
+      runTime: {
+        hour: runTimeHour.current.value,
+        min: runTimeMinutes.current.value,
+        sec: runTimeSeconds.current.value,
+      },
+      feel: runFeel.current.value,
+      condition: runCondition,
     };
 
-    onAddingRunItem(runiaryData);
+    appendRunItem(runiaryData);
     onClickCloseModal();
   };
 
@@ -42,47 +49,65 @@ export const RunItemForm = ({ onAddingRunItem, onClickCloseModal }) => {
 
   return (
     <RuniaryInputForm onSubmit={submitHandler}>
-      <div className="RunDiaryForm__condition">
-        <label htmlFor="condition">Today Condition</label>
-        <select value={runCondition} onChange={selectCondition}>
-          <option value="No running"> No running</option>
-          <option value="😆"> 😆 </option>
-          <option value="😀"> 😀 </option>
-          <option value="🙂"> 🙂 </option>
-          <option value="😨 "> 😨 </option>
-          <option value="🥵"> 🥵 </option>
-        </select>
+      <div className="runiaryForm">
+        <FormField label="Today Condition">
+          <Select
+            options={conditions}
+            value={runCondition}
+            onChange={selectCondition}
+          />
+        </FormField>
+        <FormField label="Distance">
+          <TextInput
+            type="text"
+            ref={runDistance}
+            placeholder={
+              runCondition === 'No running' ? 'No running' : 'Ex) 3km'
+            }
+            disabled={runCondition === 'No running'}
+          />
+        </FormField>
+        <FormField label="RunTime">
+          {runCondition === 'No running' ? (
+            <TextInput
+              type="text"
+              placeholder={
+                runCondition === 'No running' ? 'No running' : 'Ex) 3km'
+              }
+              disabled={runCondition === 'No running'}
+            />
+          ) : (
+            <div className="runTime">
+              <TextInput type="text" ref={runTimeHour} />
+              <span>:</span>
+              <TextInput type="text" ref={runTimeMinutes} />
+              <span>:</span>
+              <TextInput type="text" ref={runTimeSeconds} />
+            </div>
+          )}
+        </FormField>
+        <FormField label="And So on">
+          <TextArea
+            name="feeling"
+            ref={runFeel}
+            disabled={runCondition === 'No running'}
+            placeholder={
+              runCondition === 'No running' ? 'No running' : 'Ex) 오늘 저녁..'
+            }
+          />
+        </FormField>
+        <div className="buttons">
+          <Button type="submit">등록</Button>
+          <Button type="button" onClick={closeModal}>
+            닫기
+          </Button>
+        </div>
       </div>
-      <div className="RunDiaryForm__run-distance">
-        <label htmlFor="run-distance">Distance</label>
-        <TextInput
-          type="text"
-          ref={runDistanceInput}
-          placeholder={runCondition === 'No running' ? false : 'Ex) 3km'}
-          disabled={runCondition === 'No running'}
-        />
-      </div>
-      <div className="RunDiaryForm__run-time">
-        <label htmlFor="run-time">Time</label>
-        <TextInput type="text" ref={runTimeInput} />
-        <span>:</span>
-        <TextInput type="text" />
-        <span>:</span>
-        <TextInput type="text" />
-      </div>
-      <div className="RunDiaryForm__run-feeling">
-        <label htmlFor="run-feeling">How are you feeling today?</label>
-        <textarea name="feeling" cols="30" rows="10" ref={runFeelingInput} />
-      </div>
-      <Button type="submit">등록</Button>
-      <Button type="button" onClick={closeModal}>
-        닫기
-      </Button>
     </RuniaryInputForm>
   );
 };
 
 RunItemForm.propTypes = {
-  onAddingRunItem: PropTypes.func.isRequired,
+  appendRunItem: PropTypes.func.isRequired,
   onClickCloseModal: PropTypes.func.isRequired,
 };

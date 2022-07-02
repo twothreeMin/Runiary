@@ -13,7 +13,10 @@ export const RunItem = React.memo(({ runInfoList }) => {
             <ul className="runItem__information">
               <li>{runInfo.date}</li>
               <li>{runInfo.distance}km</li>
-              <li>{runInfo.time}</li>
+              <li>
+                {runInfo.runTime.hour}:{runInfo.runTime.min}:
+                {runInfo.runTime.sec}
+              </li>
               <li>{runInfo.pace}</li>
               <li>{runInfo.condition}</li>
             </ul>
@@ -32,10 +35,10 @@ RunItem.propTypes = {
       id: PropTypes.string,
       date: PropTypes.string,
       distance: PropTypes.string,
-      time: PropTypes.string,
+      runTime: PropTypes.object,
       pace: PropTypes.string,
       condition: PropTypes.string,
-      feeling: PropTypes.string,
+      feel: PropTypes.string,
     }),
   ).isRequired,
 };
