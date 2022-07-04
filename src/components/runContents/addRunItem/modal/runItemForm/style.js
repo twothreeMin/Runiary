@@ -1,16 +1,33 @@
 import styled from 'styled-components';
 
-export const RuniaryInputForm = styled.form`
+export const RuniaryForm = styled.form`
   background: #ffffff;
 
-  & .runiaryForm {
-    width: 40vw;
-    margin: 30px 40px;
+  & label {
+    display: inline-block;
+    margin: 0.4rem;
   }
 
-  .runTime {
+  .runiaryForm {
+    width: 35vw;
+  }
+
+  & .inputForm {
+    text-align: center;
+  }
+
+  & .runTime {
     display: flex;
     align-items: center;
+    justify-content: center;
+  }
+
+  & #distanceForm {
+    width: 30rem;
+  }
+
+  & #anythingForm {
+    width: 30rem;
   }
 
   & .buttons {

@@ -38,7 +38,7 @@ RunItem.propTypes = {
       runTime: PropTypes.object,
       pace: PropTypes.string,
       condition: PropTypes.string,
-      feel: PropTypes.string,
+      anything: PropTypes.string,
     }),
   ).isRequired,
 };

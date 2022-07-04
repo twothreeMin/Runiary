@@ -7,19 +7,6 @@ const initLocalData = () => {
     localStorage.setItem('runiary', JSON.stringify([]));
 };
 
-const getPace = ({ runTime, distance }) => {
-  return (
-    Math.round(
-      ((Number(runTime.hour) * 60 +
-        Number(runTime.min) +
-        Number(runTime.sec) / 60) /
-        distance +
-        Number.EPSILON) *
-        100,
-    ) / 100
-  ).toString();
-};
-
 export const RunContents = () => {
   initLocalData();
   const [runData, setRunData] = useState(
@@ -30,13 +17,7 @@ export const RunContents = () => {
     localStorage.setItem('runiary', JSON.stringify(runData));
   }, [runData]);
 
-  const appendRunItem = (runningData) => {
-    const newRunData = {
-      ...runningData,
-      date: new Date().toLocaleDateString('ko-KR'),
-      pace: getPace(runningData),
-      id: Math.random().toString(),
-    };
+  const appendRunItem = (newRunData) => {
     setRunData([newRunData, ...runData]);
   };
 

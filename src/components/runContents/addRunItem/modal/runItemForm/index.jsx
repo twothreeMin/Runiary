@@ -1,101 +1,134 @@
 import PropTypes from 'prop-types';
-import React, { useState, useRef } from 'react';
-import { FormField, Select, TextInput, TextArea } from 'grommet';
+import React, { useState } from 'react';
+import { Select, TextInput, TextArea } from 'grommet';
 import { Button } from '../../../../ui/button';
-import { RuniaryInputForm } from './style';
+import { RuniaryForm } from './style';
 
-const conditions = ['No running', '😆', '😀', '🙂', '😨', '🥵'];
+import { conditions, initInputValues } from './values';
+import { getPace } from './utils';
 
 export const RunItemForm = ({ appendRunItem, onClickCloseModal }) => {
-  const runDistance = useRef('');
-  const runTimeHour = useRef('00');
-  const runTimeMinutes = useRef('00');
-  const runTimeSeconds = useRef('00');
-  const runFeel = useRef('');
-  const [runCondition, setRunCondition] = useState('');
+  const [inputStates, setInputStates] = useState(initInputValues);
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    // const regex = /\d{2}:\d{2}:\d{2}/;
-
-    // if (!regex.test(runTimeInput.current.value)) {
-    //   runTimeInput.current.style.borderColor = 'red';
-    //   runTimeInput.current.value = '00:00:00';
-    //   return;
-    // }
-
-    const runiaryData = {
-      distance: runDistance.current.value,
-      runTime: {
-        hour: runTimeHour.current.value,
-        min: runTimeMinutes.current.value,
-        sec: runTimeSeconds.current.value,
-      },
-      feel: runFeel.current.value,
-      condition: runCondition,
-    };
-
-    appendRunItem(runiaryData);
-    onClickCloseModal();
-  };
-
-  const selectCondition = (e) => {
-    setRunCondition(e.target.value);
+  const inputChange = (e) => {
+    const { name, value } = e.target;
+    setInputStates({ ...inputStates, [name]: value });
   };
 
   const closeModal = () => {
     onClickCloseModal();
   };
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    const runiaryData = {
+      condition: inputStates.condition,
+      distance: inputStates.distance,
+      runTime: {
+        hour: inputStates.hour,
+        min: inputStates.min,
+        sec: inputStates.sec,
+      },
+      anything: inputStates.anything,
+      date: new Date().toLocaleDateString('ko-KR'),
+      pace: getPace(
+        inputStates.hour,
+        inputStates.min,
+        inputStates.sec,
+        inputStates.distance,
+      ),
+      id: Math.random().toString(),
+    };
+
+    appendRunItem(runiaryData);
+    onClickCloseModal();
+  };
+
   return (
-    <RuniaryInputForm onSubmit={submitHandler}>
+    <RuniaryForm onSubmit={submitHandler}>
       <div className="runiaryForm">
-        <FormField label="Today Condition">
+        <label htmlFor="runCondition">컨디션</label>
+        <div className="runCondition inputForm">
           <Select
+            name="condition"
             options={conditions}
-            value={runCondition}
-            onChange={selectCondition}
+            value={inputStates.condition}
+            onChange={inputChange}
           />
-        </FormField>
-        <FormField label="Distance">
+        </div>
+        <label htmlFor="runDistance">거리(km)</label>
+        <div className="runDistance inputForm">
           <TextInput
+            id="distanceForm"
+            name="distance"
             type="text"
-            ref={runDistance}
+            value={inputStates.distance}
+            onChange={inputChange}
             placeholder={
-              runCondition === 'No running' ? 'No running' : 'Ex) 3km'
+              inputStates.condition === 'No running' ? 'No running' : 'Ex) 3km'
             }
-            disabled={runCondition === 'No running'}
+            disabled={inputStates.condition === 'No running'}
           />
-        </FormField>
-        <FormField label="RunTime">
-          {runCondition === 'No running' ? (
+        </div>
+        <label htmlFor="runTime">시간</label>
+        <div className="runTime">
+          {inputStates.condition === 'No running' ? (
             <TextInput
+              id="timeForm"
+              name="time"
               type="text"
+              onChange={inputChange}
               placeholder={
-                runCondition === 'No running' ? 'No running' : 'Ex) 3km'
+                inputStates.condition === 'No running'
+                  ? 'No running'
+                  : 'Ex) 3km'
               }
-              disabled={runCondition === 'No running'}
+              disabled={inputStates.condition === 'No running'}
             />
           ) : (
-            <div className="runTime">
-              <TextInput type="text" ref={runTimeHour} />
+            <>
+              <TextInput
+                id="timeForm"
+                name="hour"
+                type="text"
+                value={inputStates.hour}
+                onChange={inputChange}
+              />
               <span>:</span>
-              <TextInput type="text" ref={runTimeMinutes} />
+              <TextInput
+                id="timeForm"
+                name="min"
+                type="text"
+                value={inputStates.min}
+                onChange={inputChange}
+              />
               <span>:</span>
-              <TextInput type="text" ref={runTimeSeconds} />
-            </div>
+              <TextInput
+                id="timeForm"
+                name="sec"
+                type="text"
+                value={inputStates.sec}
+                onChange={inputChange}
+              />
+            </>
           )}
-        </FormField>
-        <FormField label="And So on">
+        </div>
+        <label htmlFor="runAnything">기타</label>
+        <div className="runAnything inputForm">
           <TextArea
-            name="feeling"
-            ref={runFeel}
-            disabled={runCondition === 'No running'}
+            id="anythingForm"
+            name="anything"
+            value={inputStates.anything}
+            onChange={inputChange}
+            disabled={inputStates.condition === 'No running'}
             placeholder={
-              runCondition === 'No running' ? 'No running' : 'Ex) 오늘 저녁..'
+              inputStates.condition === 'No running'
+                ? 'No running'
+                : 'Ex) 오늘 저녁..'
             }
           />
-        </FormField>
+        </div>
         <div className="buttons">
           <Button type="submit">등록</Button>
           <Button type="button" onClick={closeModal}>
@@ -103,7 +136,7 @@ export const RunItemForm = ({ appendRunItem, onClickCloseModal }) => {
           </Button>
         </div>
       </div>
-    </RuniaryInputForm>
+    </RuniaryForm>
   );
 };
 
