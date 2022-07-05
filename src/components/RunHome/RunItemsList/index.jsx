@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { RunItemCard } from './style';
+import { RunItem } from './style';
 
-export const RunItem = React.memo(({ runInfoList }) => {
+export const RunItemList = React.memo(({ runInfoList }) => {
   return runInfoList ? (
     <div className="runItems">
       <h3>{runInfoList.length}(개)의 기록이 있습니다.</h3>
       {runInfoList.map((runInfo) => {
         return (
-          <RunItemCard key={runInfo.id}>
+          <RunItem key={runInfo.id}>
             <ul className="runItem__information">
               <li>{runInfo.date}</li>
               <li>{runInfo.distance}km</li>
@@ -20,7 +20,7 @@ export const RunItem = React.memo(({ runInfoList }) => {
               <li>{runInfo.pace}</li>
               <li>{runInfo.condition}</li>
             </ul>
-          </RunItemCard>
+          </RunItem>
         );
       })}
     </div>
@@ -29,7 +29,7 @@ export const RunItem = React.memo(({ runInfoList }) => {
   );
 });
 
-RunItem.propTypes = {
+RunItemList.propTypes = {
   runInfoList: PropTypes.arrayOf(
     PropTypes.exact({
       id: PropTypes.string,

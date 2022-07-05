@@ -1,30 +1,26 @@
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-import { RunItemForm } from './runItemForm';
-import { Modal } from './style';
+import { UserForm } from './UserForm';
+import { PopupModal } from './style';
 
-export const RunItemFormModal = ({
-  appendRunItem,
-  onClickCloseModal,
-  openModal,
-}) => {
+export const Modal = ({ appendRunItem, onClickCloseModal, openModal }) => {
   return (
     <>
       {ReactDOM.createPortal(
-        <Modal className={openModal && 'openModal'}>
-          <RunItemForm
+        <PopupModal className={openModal && 'openModal'}>
+          <UserForm
             appendRunItem={appendRunItem}
             onClickCloseModal={onClickCloseModal}
           />
-        </Modal>,
+        </PopupModal>,
         document.getElementById('modal-root'),
       )}
     </>
   );
 };
 
-RunItemFormModal.propTypes = {
+Modal.propTypes = {
   appendRunItem: PropTypes.func.isRequired,
   onClickCloseModal: PropTypes.func.isRequired,
   openModal: PropTypes.bool.isRequired,

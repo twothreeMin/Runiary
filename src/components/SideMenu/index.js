@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import { useState } from 'react';
-import { RouteMenu } from './routeMenu/index';
-import { MenuButton } from './menuButton/index';
+import { RouteMenu } from './RouteMenu/index';
+import { MenuButton } from './MenuButton/index';
 
 export const SideMenu = () => {
   const [openSideMenu, setOpenSideMenu] = useState(false);

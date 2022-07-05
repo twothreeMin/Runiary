@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Modal = styled.div`
+export const PopupModal = styled.div`
   & {
     display: none;
     position: fixed;

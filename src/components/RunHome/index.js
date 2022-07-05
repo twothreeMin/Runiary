@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import { AddRunItem } from './addRunItem';
-import { RunItem } from './runItem';
+import { AddRunItem } from './AddRunItem';
+import { RunItemList } from './RunItemsList';
 
 const initLocalData = () => {
   if (!localStorage.getItem('runiary'))
     localStorage.setItem('runiary', JSON.stringify([]));
 };
 
-export const RunContents = () => {
+export const RunHome = () => {
   initLocalData();
   const [runData, setRunData] = useState(
     JSON.parse(localStorage.getItem('runiary')),
@@ -24,7 +24,7 @@ export const RunContents = () => {
   return (
     <>
       <AddRunItem appendRunItem={appendRunItem} />
-      <RunItem runInfoList={runData} />
+      <RunItemList runInfoList={runData} />
     </>
   );
 };

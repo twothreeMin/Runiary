@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const RunItemCard = styled.div`
+export const RunItem = styled.div`
   & {
     margin-top: 15px;
     background-color: #e4fffa;

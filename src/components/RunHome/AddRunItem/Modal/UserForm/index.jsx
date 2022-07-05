@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Select, TextInput, TextArea } from 'grommet';
-import { Button } from '../../../../ui/button';
+import { Button } from '../../../../UI/button';
 import { RuniaryForm } from './style';
 
 import { conditions, initInputValues } from './values';
 import { getPace } from './utils';
 
-export const RunItemForm = ({ appendRunItem, onClickCloseModal }) => {
+export const UserForm = ({ appendRunItem, onClickCloseModal }) => {
   const [inputStates, setInputStates] = useState(initInputValues);
 
   const inputChange = (e) => {
@@ -140,7 +140,7 @@ export const RunItemForm = ({ appendRunItem, onClickCloseModal }) => {
   );
 };
 
-RunItemForm.propTypes = {
+UserForm.propTypes = {
   appendRunItem: PropTypes.func.isRequired,
   onClickCloseModal: PropTypes.func.isRequired,
 };
