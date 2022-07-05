@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+## 🔖
+* Javascript
+* React
+* Styled-component
+* Eslint - prettier
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Directory Structure
+![IMG_0172](https://user-images.githubusercontent.com/97874240/177333241-9fd5889d-26e4-4b57-ada7-2f783edcf14d.JPG)
 
-In the project directory, you can run:
+## Component Structure
+```bash
+├── Component
+│   ├── component
+│   ├────── index.jsx
+│   ├────── style.js
+│   ├────── (util.js)
+│   ├── index.js
+│   ├── style.js
+│   └── (util.js)
+│   
+└── App.js
+``` 
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Record about Project
+* React.Memo를 이용한 Re-rendering 최소화 적용기 : https://velog.io/@foreverything/re-rendering-최소화-적용기
+* Re-rendering 최소화 적용기 2 (Directory Structure 변경, 알맞는 component에서 State 관리)
+* PropTypes 정리 (작성 예정) > PropTypes를 사용하지 않는 이유(TypeScript를 사용해야하는 이유)
+* Styled-Component 사용해보면서 불편한 점
+* Controlled vs UnControlled 
+* Multiple Inputs 관리 적용기
+* User Form Validation
+* 내 프로젝트에서 Refactoring이 힘든 이유(이름, PropTypes, Props Drilling)
+                   
