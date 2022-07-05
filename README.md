@@ -24,7 +24,7 @@
 
 ## Record about Project
 * React.Memo를 이용한 Re-rendering 최소화 적용기 : https://velog.io/@foreverything/re-rendering-최소화-적용기
-* Re-rendering 최소화 적용기 2 (Directory Structure 변경, 알맞는 component에서 State 관리)
+* Re-rendering 최소화 적용기 2 (Directory Structure 변경, 알맞는 component에서 State 관리): https://velog.io/@foreverything/ReactRe-rendering-최소화-적용기-2
 * PropTypes 정리 (작성 예정) > PropTypes를 사용하지 않는 이유(TypeScript를 사용해야하는 이유)
 * Styled-Component 사용해보면서 불편한 점
 * Controlled vs UnControlled 
