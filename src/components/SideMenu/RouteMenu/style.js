@@ -3,9 +3,7 @@ import styled from 'styled-components';
 export const SubMenu = styled.div`
   & {
     height: 100%;
-    width: ${(props) => {
-      return props.openSideMenu ? '210px' : '0px';
-    }};
+    width: ${(props) => (props.openSideMenu ? '210px' : '0px')};
     position: fixed;
     z-index: 1;
     top: 0;

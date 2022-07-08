@@ -12,8 +12,8 @@ const CloseButton = styled.button`
   margin-left: 50px;
 `;
 
-export const CloseMenuButton = ({ onCloseSideMenu }) => {
-  return <CloseButton onClick={onCloseSideMenu}>&times;</CloseButton>;
-};
+export const CloseMenuButton = ({ onCloseSideMenu }) => (
+  <CloseButton onClick={onCloseSideMenu}>&times;</CloseButton>
+);
 
 CloseMenuButton.propTypes = { onCloseSideMenu: PropTypes.func.isRequired };

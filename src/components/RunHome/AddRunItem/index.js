@@ -3,12 +3,9 @@ import PropTypes from 'prop-types';
 import { Modal } from './Modal';
 import { OpenModalButton } from './OpenModalButton';
 
-const initLocalData = () => {
-  return (
-    localStorage.getItem('runiary') ||
-    localStorage.setItem('runiary', JSON.stringify([]))
-  );
-};
+const initLocalData = () =>
+  localStorage.getItem('runiary') ||
+  localStorage.setItem('runiary', JSON.stringify([]));
 
 export const AddRunItem = ({ appendRunItem }) => {
   initLocalData();

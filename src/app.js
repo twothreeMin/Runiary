@@ -19,19 +19,17 @@ const Runiary = styled.div`
   }
 `;
 
-const App = () => {
-  return (
-    <BrowserRouter>
-      <Runiary>
-        <RuniaryHeader />
-        <SideMenu />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/rank" element={<Rank />} />
-        </Routes>
-      </Runiary>
-    </BrowserRouter>
-  );
-};
+const App = () => (
+  <BrowserRouter>
+    <Runiary>
+      <RuniaryHeader />
+      <SideMenu />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/rank" element={<Rank />} />
+      </Routes>
+    </Runiary>
+  </BrowserRouter>
+);
 
 export default App;

@@ -12,7 +12,7 @@ module.exports = {
   ],
   rules: {
     'prettier/prettier': 'error',
-    'arrow-body-style': ['error', 'always'],
+    'arrow-body-style': ['error', 'as-needed'],
     'object-curly-newline': ['error', { multiline: true }],
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
     'react/jsx-one-expression-per-line': [0, { allow: 'none' }],

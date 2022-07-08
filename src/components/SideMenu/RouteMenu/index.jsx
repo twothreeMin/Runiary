@@ -3,19 +3,17 @@ import { Link } from 'react-router-dom';
 import { SubMenu } from './style';
 import { CloseMenuButton } from './closeMenuButton';
 
-export const RouteMenu = ({ openSideMenu, onCloseSideMenu }) => {
-  return (
-    <SubMenu openSideMenu={openSideMenu}>
-      <CloseMenuButton onCloseSideMenu={onCloseSideMenu} />
-      <Link to="/">
-        <span>home</span>
-      </Link>
-      <Link to="/rank">
-        <span>rank</span>
-      </Link>
-    </SubMenu>
-  );
-};
+export const RouteMenu = ({ openSideMenu, onCloseSideMenu }) => (
+  <SubMenu openSideMenu={openSideMenu}>
+    <CloseMenuButton onCloseSideMenu={onCloseSideMenu} />
+    <Link to="/">
+      <span>home</span>
+    </Link>
+    <Link to="/rank">
+      <span>rank</span>
+    </Link>
+  </SubMenu>
+);
 
 RouteMenu.propTypes = {
   openSideMenu: PropTypes.bool.isRequired,

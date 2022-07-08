@@ -5,7 +5,9 @@ import { RuniaryForm } from './style';
 
 import { conditions } from './values';
 import { getPace } from './utils';
-import { Select, Input, TextArea } from './components/UserForms';
+import { Select } from './components/Select';
+import { Input } from './components/Input';
+import { TextArea } from './components/TextArea';
 
 export const UserForm = ({ appendRunItem, onClickCloseModal }) => {
   const [formValues, setFormValues] = useState({
@@ -16,12 +18,17 @@ export const UserForm = ({ appendRunItem, onClickCloseModal }) => {
     sec: '',
     anything: '',
   });
+  const [inputValid, setInputValid] = useState(false);
 
   console.log(formValues);
 
   const getInputValue = (obj) => {
     const key = Object.keys(obj);
     setFormValues({ ...formValues, [key]: obj[key] });
+  };
+
+  const getInputValid = (valid) => {
+    setInputValid(valid);
   };
 
   const closeModal = () => {
@@ -71,15 +78,31 @@ export const UserForm = ({ appendRunItem, onClickCloseModal }) => {
           <>
             <label htmlFor="runDistance">거리(km)</label>
             <div className="runDistance inputForm">
-              <Input name="distance" getInputValue={getInputValue} />
+              <Input
+                name="distance"
+                getInputValue={getInputValue}
+                getInputValid={getInputValid}
+              />
             </div>
             <label htmlFor="runTime">시간</label>
             <div className="runTime">
-              <Input name="hour" getInputValue={getInputValue} />
+              <Input
+                name="hour"
+                getInputValue={getInputValue}
+                getInputValid={getInputValid}
+              />
               <span>:</span>
-              <Input name="min" getInputValue={getInputValue} />
+              <Input
+                name="min"
+                getInputValue={getInputValue}
+                getInputValid={getInputValid}
+              />
               <span>:</span>
-              <Input name="sec" getInputValue={getInputValue} />
+              <Input
+                name="sec"
+                getInputValue={getInputValue}
+                getInputValid={getInputValid}
+              />
             </div>
             <label htmlFor="runAnything">기타</label>
             <div className="runAnything inputForm">
@@ -88,7 +111,9 @@ export const UserForm = ({ appendRunItem, onClickCloseModal }) => {
           </>
         )}
         <div className="buttons">
-          <Button type="submit">등록</Button>
+          <Button type="submit" valid={inputValid}>
+            등록
+          </Button>
           <Button type="button" onClick={closeModal}>
             닫기
           </Button>

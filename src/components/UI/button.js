@@ -7,18 +7,21 @@ export const SimpleButton = styled.button`
   padding: 10px 30px;
 `;
 
-export const Button = ({ type, ...props }) => {
-  return (
-    <SimpleButton type={type || 'button'} onClick={props.onClick}>
-      {props.children}
-    </SimpleButton>
-  );
-};
+export const Button = ({ type, ...props }) => (
+  <SimpleButton
+    type={type || 'button'}
+    onClick={props.onClick}
+    disabled={props.valid ? 'disabled' : ''}
+  >
+    {props.children}
+  </SimpleButton>
+);
 
 Button.propTypes = {
   type: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  valid: PropTypes.bool,
 };
 
-Button.defaultProps = { onClick: () => {} };
+Button.defaultProps = { onClick: () => {}, valid: false };

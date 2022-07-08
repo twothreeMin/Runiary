@@ -1,5 +1,3 @@
 import { RunHome } from '../components/RunHome/index';
 
-export const Home = () => {
-  return <RunHome />;
-};
+export const Home = () => <RunHome />;
