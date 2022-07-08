@@ -37,3 +37,8 @@ export const RuniaryForm = styled.form`
     padding-top: 0.4rem;
   }
 `;
+
+export const GuideSpan = styled.span`
+  display: ${({ valid }) => (valid ? 'block' : 'none')};
+  color: red;
+`;

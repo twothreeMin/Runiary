@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Button } from '../../../../UI/Button';
-import { RuniaryForm } from './style';
+import { GuideSpan, RuniaryForm } from './style';
 
 import { conditions } from './values';
 import { getPace } from './utils';
@@ -110,6 +110,9 @@ export const UserForm = ({ appendRunItem, onClickCloseModal }) => {
             </div>
           </>
         )}
+        <GuideSpan valid={inputValid}>
+          거리 또는 시간 폼에 문자열이 감지되었습니다.
+        </GuideSpan>
         <div className="buttons">
           <Button type="submit" valid={inputValid}>
             등록
