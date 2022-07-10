@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { ModalContextProvider } from '../../../store/modal-context';
 import { Modal } from './Modal';
 import { OpenModalButton } from './OpenModalButton';
 
@@ -7,28 +6,13 @@ const initLocalData = () =>
   localStorage.getItem('runiary') ||
   localStorage.setItem('runiary', JSON.stringify([]));
 
-export const AddRunItem = ({ appendRunItem }) => {
+export const AddRunItem = () => {
   initLocalData();
-  const [openModal, setOpenModal] = useState(false);
-
-  const onClickOpenModal = () => {
-    setOpenModal(true);
-  };
-
-  const onClickCloseModal = () => {
-    setOpenModal(false);
-  };
 
   return (
-    <>
-      <Modal
-        appendRunItem={appendRunItem}
-        onClickCloseModal={onClickCloseModal}
-        openModal={openModal}
-      />
-      <OpenModalButton onClickOpenModal={onClickOpenModal} />
-    </>
+    <ModalContextProvider>
+      <Modal />
+      <OpenModalButton />
+    </ModalContextProvider>
   );
 };
-
-AddRunItem.propTypes = { appendRunItem: PropTypes.func.isRequired };

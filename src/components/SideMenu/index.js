@@ -1,7 +1,9 @@
 import ReactDOM from 'react-dom';
-import { useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { RouteMenu } from './RouteMenu/index';
 import { MenuButton } from './MenuButton/index';
+
+const SideMenuContext = createContext('defaultValue');
 
 export const SideMenu = () => {
   const [openSideMenu, setOpenSideMenu] = useState(false);

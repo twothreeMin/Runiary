@@ -1,42 +1,43 @@
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import { Button } from '../../../../UI/Button';
+import React, { useState, useContext } from 'react';
+import { Button } from './components/Button';
 import { GuideSpan, RuniaryForm } from './style';
-
-import { conditions } from './values';
+import { conditions, initData } from './values';
 import { getPace } from './utils';
 import { Select } from './components/Select';
 import { Input } from './components/Input';
 import { TextArea } from './components/TextArea';
+import { ModalContext } from '../../../../../store/modal-context';
+import { RunDataContext } from '../../../../../store/rundata-context';
 
-export const UserForm = ({ appendRunItem, onClickCloseModal }) => {
-  const [formValues, setFormValues] = useState({
-    condition: 'No running',
-    distance: '',
-    hour: '',
-    min: '',
-    sec: '',
-    anything: '',
-  });
+export const UserForm = () => {
+  const [formValues, setFormValues] = useState(initData);
   const [inputValid, setInputValid] = useState(false);
 
-  console.log(formValues);
+  const { onClickCloseModal } = useContext(ModalContext);
+  const { appendRunItem } = useContext(RunDataContext);
 
   const getInputValue = (obj) => {
+    console.log('getInputValue');
     const key = Object.keys(obj);
-    setFormValues({ ...formValues, [key]: obj[key] });
+    setFormValues({
+      ...formValues,
+      [key]: obj[key],
+    });
   };
 
   const getInputValid = (valid) => {
+    console.log('getInputValid');
     setInputValid(valid);
   };
 
   const closeModal = () => {
+    console.log('closeModal');
     onClickCloseModal();
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log('submitHandler');
 
     const runiaryData = {
       condition: formValues.condition,
@@ -124,9 +125,4 @@ export const UserForm = ({ appendRunItem, onClickCloseModal }) => {
       </div>
     </RuniaryForm>
   );
-};
-
-UserForm.propTypes = {
-  appendRunItem: PropTypes.func.isRequired,
-  onClickCloseModal: PropTypes.func.isRequired,
 };

@@ -1,13 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
+import React, { useContext } from 'react';
 import { RunItem } from './style';
+import { RunDataContext } from '../../../store/rundata-context';
 
-export const RunItemList = React.memo(({ runInfoList }) =>
-  runInfoList ? (
+export const RunItemList = React.memo(() => {
+  const { runData } = useContext(RunDataContext);
+
+  return runData ? (
     <div className="runItems">
-      <h3>{runInfoList.length}(개)의 기록이 있습니다.</h3>
-      {runInfoList.map((runInfo) => (
+      <h3>{runData.length}(개)의 기록이 있습니다.</h3>
+      {runData.map((runInfo) => (
         <RunItem key={runInfo.id}>
           <ul className="runItem__information">
             <li>{runInfo.date}</li>
@@ -23,19 +24,5 @@ export const RunItemList = React.memo(({ runInfoList }) =>
     </div>
   ) : (
     <div />
-  ),
-);
-
-RunItemList.propTypes = {
-  runInfoList: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string,
-      date: PropTypes.string,
-      distance: PropTypes.string,
-      runTime: PropTypes.object,
-      pace: PropTypes.string,
-      condition: PropTypes.string,
-      anything: PropTypes.string,
-    }),
-  ).isRequired,
-};
+  );
+});

@@ -13,7 +13,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'arrow-body-style': ['error', 'as-needed'],
-    'object-curly-newline': ['error', { multiline: true }],
+    'object-curly-newline': 'off',
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
     'react/jsx-one-expression-per-line': [0, { allow: 'none' }],
     'react/function-component-definition': [
@@ -28,6 +28,7 @@ module.exports = {
       { handlers: ['onClick', 'onKeyUp'] },
     ],
     'no-console': 'off',
+    'react/prop-types': 'off',
     'react/button-has-type': 'off', // 단축평가로 button, submit을 판단하고 사용할 것이기 때문에 off
   },
 };

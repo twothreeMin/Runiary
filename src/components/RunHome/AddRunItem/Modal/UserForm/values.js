@@ -6,3 +6,12 @@ export const conditions = [
   { id: '4', name: '😨' },
   { id: '5', name: '🥵' },
 ];
+
+export const initData = {
+  condition: 'No running',
+  distance: '0',
+  hour: '00',
+  min: '00',
+  sec: '00',
+  anything: '',
+};

@@ -1,10 +1,12 @@
-import React from 'react';
-
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import { ModalContext } from '../../../../store/modal-context';
 import { AddingButton } from './style';
 
-export const OpenModalButton = React.memo(({ onClickOpenModal }) => {
+export const OpenModalButton = React.memo(() => {
+  const { onClickOpenModal } = useContext(ModalContext);
+
   const openModal = () => {
+    console.log(onClickOpenModal);
     onClickOpenModal();
   };
 
@@ -14,5 +16,3 @@ export const OpenModalButton = React.memo(({ onClickOpenModal }) => {
     </AddingButton>
   );
 });
-
-OpenModalButton.propTypes = { onClickOpenModal: PropTypes.func.isRequired };

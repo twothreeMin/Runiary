@@ -12,7 +12,7 @@ export const Input = ({ ...props }) => {
   const [inputValue, setInputValue] = useState('');
   const [valid, setValid] = useState(false);
 
-  console.log(inputValue);
+  console.log(inputValue, `${props.name}`);
 
   useEffect(() => {
     const validResult = validateString(inputValue);
